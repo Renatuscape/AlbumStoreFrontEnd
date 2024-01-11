@@ -41,15 +41,24 @@ export function AlbumStore() {
     }
 
     const updateAlbum = (album: Album) => {
-        const updatedAlbums = albums.map((a) =>
-            a.id === album.id
-                ? {
-                    id: album.id,
-                    name: album.name,
-                    artist: album.artist,
-                    genre: album.genre,
-                }
-                : a
+        const updatedAlbums: Album[] = [];
+
+        albums.map((updatedAlbum) => {
+            if (album.id === updatedAlbum.id) {
+                updatedAlbums.push(updatedAlbum)
+            } else {
+                updatedAlbums.push(album)
+            }
+        }
+
+            // a.id === album.id
+            //     ? {
+            //         id: album.id,
+            //         name: album.name,
+            //         artist: album.artist,
+            //         genre: album.genre,
+            //     }
+            //     : a
         );
 
         // Set the state with the new array
